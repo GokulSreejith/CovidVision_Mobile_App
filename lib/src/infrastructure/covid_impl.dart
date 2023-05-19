@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:covid_detective/src/domain/core/api_endpoints.dart';
 import 'package:covid_detective/src/domain/core/dio_helper.dart';
@@ -20,11 +21,9 @@ class CovidImpl implements CovidServices {
       FormData formData = FormData.fromMap({
         'image': await MultipartFile.fromFile(
           image.path,
-          // contentType:
-          //     MediaType('image', 'jpeg'), // Replace with the actual image type
         ),
-        'csrfmiddlewaretoken': "Oc2rpCHMowhg2VNnVCjcW9H6VH9AidkTwgtC8GeXVClQ4yHUcBzLQDzWMum65i26Oc2rpCHMowhg2VNnVCjcW9H6VH9AidkTwgtC8GeXVClQ4yHUcBzLQDzWMum65i26"
       });
+
       //  Fetch Data from the server
       final Response response =
           await dioClient.post(ApiEndpoints.covid, data: formData);
