@@ -8,7 +8,7 @@ class CovidResponse {
   bool success;
   @JsonKey(name: 'message')
   String message;
-  @JsonKey(name: 'result')
+  @JsonKey(name: 'data')
   CovidModel result;
 
   CovidResponse({

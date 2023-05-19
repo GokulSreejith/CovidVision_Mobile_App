@@ -7,12 +7,12 @@ part of 'covid_model.dart';
 // **************************************************************************
 
 CovidModel _$CovidModelFromJson(Map<String, dynamic> json) => CovidModel(
-      id: json['id'] as int,
+      index: json['index'] as int,
       label: json['label'] as String,
     );
 
 Map<String, dynamic> _$CovidModelToJson(CovidModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'index': instance.index,
       'label': instance.label,
     };

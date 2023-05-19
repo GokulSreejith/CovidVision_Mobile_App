@@ -34,6 +34,7 @@ Future<SelectedImage?> getImage({
           SelectedImage(source: source, file: File(croppedFile.path));
       imageNotifier.value = selectedImage;
       imageNotifier.notifyListeners();
+      print(selectedImage);
       return selectedImage;
     }
   }

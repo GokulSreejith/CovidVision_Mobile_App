@@ -4,13 +4,13 @@ part 'covid_model.g.dart';
 
 @JsonSerializable()
 class CovidModel {
-  @JsonKey(name: "id")
-  int id;
+  @JsonKey(name: "index")
+  int index;
   @JsonKey(name: "label")
   String label;
 
   CovidModel({
-    required this.id,
+    required this.index,
     required this.label,
   });
 
