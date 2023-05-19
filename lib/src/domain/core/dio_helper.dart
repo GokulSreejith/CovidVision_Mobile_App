@@ -17,7 +17,7 @@ class JwtInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) {
-    // final token = Prefs.getString(SharedPreferenceKeys.userToken);
+    // final token = get csrf token from server
 
     // if (token.isNotEmpty) {
     //   options.headers["Authorization"] = 'Bearer $token';

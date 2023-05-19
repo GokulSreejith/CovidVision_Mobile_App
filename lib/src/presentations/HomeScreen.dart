@@ -89,7 +89,7 @@ class HomeScreen extends StatelessWidget {
                             onPressed: () =>
                                 getImage(source: ImageSource.gallery),
                             child: const Text(
-                              "Gallery",
+                              "Pick a XRay Image",
                               style: TextStyle(color: KColors.textColor),
                             ),
                           )
