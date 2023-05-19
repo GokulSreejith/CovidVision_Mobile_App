@@ -1,4 +1,4 @@
-package com.samnijin.health
+package com.gokulsreejith.covid-detective
 
 import io.flutter.embedding.android.FlutterActivity
 

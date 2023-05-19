@@ -2,7 +2,7 @@ import 'package:covid_detective/src/core/colors.dart';
 import 'package:covid_detective/src/core/constant.dart';
 import 'package:covid_detective/src/core/images.dart';
 import 'package:covid_detective/src/domain/core/failures/main_failure.dart';
-import 'package:covid_detective/src/domain/covid/covid_service.dart';
+import 'package:covid_detective/src/infrastructure/covid_impl.dart';
 import 'package:covid_detective/src/domain/covid/models/covid_resp.dart';
 import 'package:covid_detective/utils/image_selecter.dart';
 import 'package:covid_detective/utils/notification_helper.dart';
@@ -23,12 +23,7 @@ class HomeScreen extends StatelessWidget {
         title: Text(Constant.appName),
         centerTitle: true,
       ),
-      body:
-          // StatefullWrapper(
-          //   onInit: loadTflite(),
-          //   onDispose: closeTflite(),
-          //   child:
-          Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -82,20 +77,6 @@ class HomeScreen extends StatelessWidget {
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          ElevatedButton(
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                KColors.primaryColor,
-                              ),
-                            ),
-                            onPressed: () => getImage(
-                              source: ImageSource.camera,
-                            ),
-                            child: const Text(
-                              "Camera",
-                              style: TextStyle(color: KColors.textColor),
-                            ),
-                          ),
                           const SizedBox(
                             width: 20,
                           ),
@@ -157,18 +138,21 @@ class HomeScreen extends StatelessWidget {
                                 return;
                               }
 
+                              final covidServices =
+                                  CovidImpl(); // Instantiate the CovidServices class
+
                               // Fetch Api
-                              final covidResp = await CovidServices()
-                                  .checkCovid(image: imageNotifier.value!.file);
+                              final covidResp = await covidServices.checkCovid(
+                                  image: imageNotifier.value!.file);
 
                               // Fold covid and update result notifier
-                              final _state = cartResp.fold(
+                              final _state = covidResp.fold(
                                 (MainFailure failure) {
                                   NotificationHelper.showSnackBar(
                                       label: failure.message);
                                 },
                                 (CovidResponse resp) {
-                                  resultNotifier.value = resp.result;
+                                  resultNotifier.value = resp.result.index;
                                   resultNotifier.notifyListeners();
                                 },
                               );
@@ -241,7 +225,6 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      // ),
     );
   }
 }

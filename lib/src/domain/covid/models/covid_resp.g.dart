@@ -10,12 +10,12 @@ CovidResponse _$CovidResponseFromJson(Map<String, dynamic> json) =>
     CovidResponse(
       success: json['success'] as bool,
       message: json['message'] as String,
-      result: CovidModel.fromJson(json['result'] as Map<String, dynamic>),
+      result: CovidModel.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$CovidResponseToJson(CovidResponse instance) =>
     <String, dynamic>{
       'success': instance.success,
       'message': instance.message,
-      'result': instance.result,
+      'data': instance.result,
     };

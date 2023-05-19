@@ -23,6 +23,7 @@ class CovidImpl implements CovidServices {
           // contentType:
           //     MediaType('image', 'jpeg'), // Replace with the actual image type
         ),
+        'csrfmiddlewaretoken': "Oc2rpCHMowhg2VNnVCjcW9H6VH9AidkTwgtC8GeXVClQ4yHUcBzLQDzWMum65i26Oc2rpCHMowhg2VNnVCjcW9H6VH9AidkTwgtC8GeXVClQ4yHUcBzLQDzWMum65i26"
       });
       //  Fetch Data from the server
       final Response response =
