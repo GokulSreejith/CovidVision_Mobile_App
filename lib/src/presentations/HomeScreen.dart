@@ -157,21 +157,21 @@ class HomeScreen extends StatelessWidget {
                                 return;
                               }
 
-                              // // Fetch Api
-                              // final covidResp = await CovidServices()
-                              //     .checkCovid(image: imageNotifier.value!.file);
+                              // Fetch Api
+                              final covidResp = await CovidServices()
+                                  .checkCovid(image: imageNotifier.value!.file);
 
-                              // // Fold covid and update result notifier
-                              // final _state = cartResp.fold(
-                              //   (MainFailure failure) {
-                              //     NotificationHelper.showSnackBar(
-                              //         label: failure.message);
-                              //   },
-                              //   (CovidResponse resp) {
-                              //     resultNotifier.value = resp.result;
-                              //     resultNotifier.notifyListeners();
-                              //   },
-                              // );
+                              // Fold covid and update result notifier
+                              final _state = cartResp.fold(
+                                (MainFailure failure) {
+                                  NotificationHelper.showSnackBar(
+                                      label: failure.message);
+                                },
+                                (CovidResponse resp) {
+                                  resultNotifier.value = resp.result;
+                                  resultNotifier.notifyListeners();
+                                },
+                              );
                             },
                             child: const Text(
                               "Submit",
